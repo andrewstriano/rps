@@ -33,8 +33,37 @@ function playRound(playerChoice, computerChoice) {
     else {
         roundResult = "Computer Wins"
     }
-    console.log(playerChoice);
-    console.log(computerChoice);
-    console.log(roundResult);
+    return roundResult;
 };
-playRound();
+
+function game() {
+    let playerScore = 0;
+    let computerScore = 0;
+    for (let i = 0; i < 5; i++) {
+        playRound();
+        if (playRound() === "Player Wins") {
+            playerScore++;
+        }
+        else if (playRound() === "Its a Tie") {
+            let string = `round ${i} is a tie`;
+            console.log(string);
+        }
+        else {
+            computerScore++;
+        }
+    }
+    if (playerScore > computerScore) {
+        gameResult = "Player Wins Game";
+    }
+    else if (playerScore === computerScore) {
+        gameResult = "Tie";
+    }
+    else {
+        gameResult = "Computer Wins Game";
+    }
+    console.log(playerScore);
+    console.log(computerScore);
+    return gameResult;
+}
+
+console.log(game());
